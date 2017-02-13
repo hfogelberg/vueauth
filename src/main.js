@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import router from './router';
-import store from './store';
+import {store} from './store/store.js'
 import { FBApp, FBUIApp } from './helpers/firebaseConfig';
 
 FBApp.auth().onAuthStateChanged(user => store.commit('SET_USER', user));
