@@ -1,16 +1,33 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import firebase from 'firebase';
+import firebaseui from 'firebaseui';
 import router from './router';
 import {store} from './store/store.js'
-import { FBApp, FBUIApp } from './helpers/firebaseConfig';
+import {config} from './helpers/firebaseConfig';
 
-FBApp.auth().onAuthStateChanged(user => store.commit('SET_USER', user));
-store.commit('SET_FB_APP', FBApp);
-store.commit('SET_FB_UI_APP', FBUIApp);
+// firebase.auth().onAuthStateChanged((user) => {
+//   console.log('Auth state changed');
+//   if(user) {
+//     console.log('We have a user');
+//   } else {
+//     console.log('No user');
+//   }
+// });
+// firebase.onAuthStateChanged((user) => {
+//   console.log('Main onAuthStateChanged');
+//   if(user) {
+//     console.log('We have a user ');
+//   } else {
+//     console.log('No user');
+//   }
+// });
 
 Vue.use(VueRouter);
-/* eslint-disable no-new */
 new Vue({
   router,
   store,
+  created() {
+    firebase.initializeApp(config)
+  },
 }).$mount('#app');

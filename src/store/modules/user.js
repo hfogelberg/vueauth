@@ -1,35 +1,53 @@
 const state = {
   user: null,
-  fbApp: null,
-  fbUiApp: null,
+  userId: '',
+  photoUrl: '',
+  displayName: ''
 }
 
 const getters = {
   user: state => {
     return state.user
   },
-  fbApp: state => {
-    return state.fbApp
+  userId:state=>{
+    return state.userId
   },
-  fbUiApp: state => {
-    return state.fbUiApp
+  photoUrl:state=>{
+    return state.photoUrl
+  },
+  displayName:state=>{
+    return state.displayName
   }
+
 }
 
 const mutations = {
-  SET_USER: (state, user) =>{
+  user: (state, user) =>{
     state.user = user;
   },
-  SET_FB_APP:(state, fbApp) => {
-    state.fbApp = fbApp;
+  userId: (state, userId) => {
+    state.userId=userId
   },
-  SET_FB_UI_APP:(state, fbUiApp)=> {
-    state.fbUiApp = fbUiApp;
+  photoUrl:(state, photoUrl) =>{
+    state.photoUrl=photoUrl
   },
+  displayName:(state, displayName)=>{
+    state.displayName=displayName
+  }
+}
+
+const actions = {
+  setUser:({commit}, payload)=>{
+    commit('user', payload)
+    commit('userId', payload.uid)
+    commit('photoUrl', payload.providerData[0].photoURL)
+    commit('displayName', payload.displayName)
+  }
 }
 
 export default {
   state,
   getters,
-  mutations
+  mutations,
+  actions
 }
