@@ -8,7 +8,7 @@
       <p>{{userId}}</p>
       <hr>
       <pre>
-        {{this.user}}
+        {{user}}
       </pre>
   </div>
 </template>
@@ -17,12 +17,19 @@
 import firebase from 'firebase'
 
 export default {
+  created() {
+      this.user = this.$store.getters.user
+      this.photo = this.$store.getters.photoUrl
+      this.userId = this.$store.getters.userId
+      this.displayName = this.$store.getters.displayName
+  },
+
   data(){
     return {
-      user: this.$store.getters.user,
-      photo: this.$store.getters.photoUrl,
-      userId: this.$store.getters.userId,
-      displayName: this.$store.getters.displayName
+      user: '',
+      photo: '',
+      userId: '',
+      displayName: ''
     }
   },
 
