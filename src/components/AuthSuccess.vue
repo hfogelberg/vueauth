@@ -6,10 +6,6 @@
       <img :src="photo"  style="height: 120px"> <br>
       <p>{{displayName}}</p>
       <p>{{userId}}</p>
-      <hr>
-      <pre>
-        {{user}}
-      </pre>
   </div>
 </template>
 
@@ -18,15 +14,13 @@ import firebase from 'firebase'
 
 export default {
   created() {
-      this.user = this.$store.getters.user
-      this.photo = this.$store.getters.photoUrl
-      this.userId = this.$store.getters.userId
-      this.displayName = this.$store.getters.displayName
+    this.photo = localStorage.getItem('fbPhoto')
+    this.userId = localStorage.getItem('fbDisplayName')
+    this.displayName = localStorage.getItem('fbUid')
   },
 
   data(){
     return {
-      user: '',
       photo: '',
       userId: '',
       displayName: ''
@@ -39,11 +33,7 @@ export default {
         localStorage.removeItem('fbPhoto')
         localStorage.removeItem('fbUid')
         localStorage.removeItem('fbDisplayName')
-
-        this.$store.commit('user', '')
-        this.$store.commit('userId', '')
-        this.$store.commit('photoUrl', '')
-        this.$store.commit('displayName', '')
+        // this.$router.push('/auth')
       }
   },
 };

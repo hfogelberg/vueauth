@@ -15,21 +15,6 @@ import {config} from '../helpers/firebaseConfig';
 
 export default {
   name: 'auth',
-
-  created() {
-    firebase.auth().onAuthStateChanged((user) => {
-      if(user) {
-        this.$store.dispatch('setUser', user)
-          .then(()=>{
-            this.$router.push('/success')}
-          )
-
-      } else {
-        console.log('No user');
-      }
-    })
-  },
-
   mounted() {
     var uiConfig = {
       signInSuccessUrl: '/success',

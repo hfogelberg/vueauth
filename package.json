@@ -11,8 +11,7 @@
     "firebase": "^3.6.9",
     "firebaseui": "^1.0.0",
     "vue": "^2.1.0",
-    "vue-router": "^2.2.0",
-    "vuex": "^2.1.2"
+    "vue-router": "^2.2.0"
   },
   "devDependencies": {
     "babel-core": "^6.0.0",

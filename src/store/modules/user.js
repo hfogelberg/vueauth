@@ -38,6 +38,7 @@ const mutations = {
 
 const actions = {
   setUser:({commit}, payload)=>{
+    alert('setUser ', payload.uid);
     commit('user', payload)
     commit('userId', payload.uid)
     commit('photoUrl', payload.providerData[0].photoURL)
