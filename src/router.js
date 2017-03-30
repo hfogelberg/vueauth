@@ -8,7 +8,7 @@ const router = new VueRouter({
     { path: '/', component: Auth },
     { path: '/auth', component: Auth },
     { path: '/success', component: AuthSuccess }
-  ],
+  ]
 });
 
 export default router;

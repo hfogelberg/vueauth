@@ -15,8 +15,8 @@ import firebase from 'firebase'
 export default {
   created() {
     this.photo = localStorage.getItem('fbPhoto')
-    this.userId = localStorage.getItem('fbDisplayName')
-    this.displayName = localStorage.getItem('fbUid')
+    this.userId = localStorage.getItem('fbUid')
+    this.displayName = localStorage.getItem('fbDisplayName')
   },
 
   data(){
@@ -29,11 +29,11 @@ export default {
 
   methods: {
       logOut() {
-        firebase.auth().signOut()
         localStorage.removeItem('fbPhoto')
         localStorage.removeItem('fbUid')
         localStorage.removeItem('fbDisplayName')
-        // this.$router.push('/auth')
+        firebase.auth().signOut()
+        this.$router.push('/auth')
       }
   },
 };
