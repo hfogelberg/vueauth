@@ -1,3 +1,4 @@
+import App from './App.vue'
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import firebase from 'firebase';
@@ -22,4 +23,6 @@ new Vue({
       }
     }) ;
   },
-}).$mount('#app');
+  el: '#app',
+  render: h => h(App)
+})
