@@ -4,8 +4,11 @@
       <button @click='logOut'>Log out</button>
       <hr>
       <img :src="photo"  style="height: 120px"> <br>
-      <p>{{displayName}}</p>
+      <p>{{name}}</p>
+      <p>{{email}}</p>
       <p>{{userId}}</p>
+      <hr>
+      <pre>{{user}}</pre>
   </div>
 </template>
 
@@ -14,16 +17,22 @@ import firebase from 'firebase'
 
 export default {
   created() {
-    this.photo = localStorage.getItem('fbPhoto')
-    this.userId = localStorage.getItem('fbUid')
-    this.displayName = localStorage.getItem('fbDisplayName')
+    this.user = firebase.auth().currentUser;
+    if(this.user) {
+      this.name = this.user.displayName;
+      this.email = this.user.email;
+      this.photo = this.user.photoURL;
+      this.userId = this.user.uid;
+    }
   },
 
   data(){
     return {
       photo: '',
       userId: '',
-      displayName: ''
+      name: '',
+      email: '',
+      user: {}
     }
   },
 

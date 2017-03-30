@@ -14,9 +14,6 @@ new Vue({
 
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
-        localStorage.setItem('fbPhoto', user.providerData[0].photoURL)
-        localStorage.setItem('fbUid', user.displayName)
-        localStorage.setItem('fbDisplayName', user.uid)
         this.$router.push('/success')
       } else {
         this.$router.push('/auth')
