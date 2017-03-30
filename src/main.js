@@ -9,7 +9,7 @@ Vue.use(VueRouter);
 new Vue({
   router,
   created() {
-    firebase.initializeApp(config)
+    firebase.initializeApp(config);
 
     firebase.auth().onAuthStateChanged((user) => {
       if(user) {
@@ -18,9 +18,8 @@ new Vue({
         localStorage.setItem('fbDisplayName', user.uid)
         this.$router.push('/success')
       } else {
-        alert('No user');
         this.$router.push('/auth')
       }
-    })    
+    }) ;
   },
 }).$mount('#app');
